@@ -1,0 +1,64 @@
+pass= Choose a password
+key = 1234
+
+roslaunch realsense2_camera rs_camera.launch enable_gyro:=false enable_accel:=false
+
+source ~/catkin_ws_make/devel/setup.bash
+roslaunch apriltags2_ros continuous_detection.launch
+
+source ~/catkin_ws_make/devel/setup.bash
+roslaunch video_stream_opencv webcam.launch
+
+source ~/catkin_ws/devel/setup.bash
+cd ~/catkin_ws/src/VIO/launch
+sudo chmod 666 /dev/ttyTHS1
+Choose a password
+roslaunch bridge_mavros.launch
+
+cd Desktop
+python realpose.py
+
+ssh u@192.168.43.162
+
+important qgroundcontrol parameters:
+SYS_MC_EST_GROUP
+LPE_PN
+
+echo 79 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio79/direction
+echo 1 > /sys/class/gpio/gpio79/value
+echo 0 > /sys/class/gpio/gpio79/value
+
+ssh u@192.168.113.162
+ssh u@192.168.43.162
+
+sudo screen /dev/ttyACM0 115200
+
+sudo nmcli dev wifi connect "Le le lichad" password "yvvn4679"
+
+rosbag record -O solution /tag_Odometry /tag_detections_image /webcam/image_raw
+
+rosrun jsk_rosbag_tools bag_to_video.py /home/devyan/Documents/solution.bag --out solution.mp4 \ --fps 30 \ --channels 1 \ --image-topic /webcam/image_raw
+
+rosbag2video.py --fps 30 \ --rate 1 \ -o solution.mp4 \ -t /webcam/image_raw \ solution.bag
+
+sudo screen /dev/ttyACM0 115200
+
+{id: 0, size: 0.143, x: 0.0000, y: 0.0000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 1, size: 0.143, x: 2.1000, y: 1.4000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 2, size: 0.143, x: 1.4000, y: 0.0000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 4, size: 0.143, x: 0.7000, y: 0.7000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 5, size: 0.143, x: 2.1000, y: 0.7000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 6, size: 0.143, x: 1.4000, y: 0.7000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 7, size: 0.143, x: 0.0000, y: 0.7000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 8, size: 0.143, x: 0.0000, y: 1.4000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 9, size: 0.143, x: 0.7000, y: 1.4000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 10, size: 0.143, x: 0.7000, y: 0.0000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 11, size: 0.143, x: 0.7000, y: 2.1000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 12, size: 0.143, x: 2.1000, y: 2.1000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 13, size: 0.143, x: 0.0000, y: 2.1000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 14, size: 0.143, x: 2.1000, y: 0.0000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 15, size: 0.143, x: 1.4000, y: 2.1000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 16, size: 0.143, x: 1.4000, y: 1.4000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 17, size: 0.143, x: -1.1500, y: 0.0000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
+{id: 18, size: 0.143, x: -1.0500, y: 2.0000, z: 0.0, qw: 0.707, qx: 0.0, qy: 0.0, qz: -0.707},
